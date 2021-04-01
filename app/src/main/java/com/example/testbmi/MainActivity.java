@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 
@@ -28,13 +29,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void calBMI(View view) {
-        if(height.getText().toString().isEmpty() || weight.getText().toString().isEmpty()) {
-            showbmi.setText("請輸入身高或體重的數值");
-        } else {
-            double h = Double.parseDouble(height.getText().toString());
-            double w = Double.parseDouble(weight.getText().toString());
-            double bmi = w / ((h/100.0) * (h/100.0));
-            String txt = "";
+        double bmi = Double.parseDouble(bmi_value());
+        String txt = "";
             if(bmi<18.5) {
                 txt = "體重過輕";
                 ImageView.setImageResource(R.drawable.a1);
@@ -45,12 +41,28 @@ public class MainActivity extends AppCompatActivity {
                 txt = "體重正常";
                 ImageView.setImageResource(R.drawable.a2);
             }
-            DecimalFormat decimalFormat = new DecimalFormat("#.##");
+
 
  //           showbmi.setText(String.valueOf(bmi)+txt);
-              showbmi.setText(decimalFormat.format(bmi)+txt);
+              showbmi.setText(String.valueOf(bmi)+txt);
 
         }
 
+    private String bmi_value() {
+        if(height.getText().toString().isEmpty() || weight.getText().toString().isEmpty()) {
+            showbmi.setText("請輸入身高或體重的數值");
+            return "0.0";
+        } else {
+            double h = Double.parseDouble(height.getText().toString());
+            double w = Double.parseDouble(weight.getText().toString());
+            double bmi = w / ((h / 100.0) * (h / 100.0));
+            DecimalFormat decimalFormat = new DecimalFormat("#.##");
+            return decimalFormat.format(bmi);
+        }
+    }
+
+    public void showToast(View view) {
+        String bmi = bmi_value();
+        Toast.makeText(this, bmi,Toast.LENGTH_LONG).show();
     }
 }
