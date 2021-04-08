@@ -4,4 +4,10 @@
     <string name="height">身高(cm)</string>
     <string name="weight">體重(kg)</string>
     <string name="Submit">計算bmi</string>
+    <string-array name="color">
+        <item>紅色</item>
+        <item>綠色</item>
+        <item>藍色</item>
+        <item>白色</item>
+    </string-array>
 </resources>

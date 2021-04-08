@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText weight;
     private TextView showbmi;
     private ImageView ImageView;
+    private boolean[] checked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         weight = findViewById(R.id.edWeight);
         showbmi = findViewById(R.id.tvShowBMI);
         ImageView =findViewById(R.id.ivshow);
+        checked = new boolean[]{false,false,false,false};
     }
 
     public void calBMI(View view) {
@@ -73,12 +75,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void show_alterdialog(View view) {
-        String[] a={"Red","Green","Blue"};
+ //       String[] a={"Red","Green","Blue"};
+
         new AlertDialog.Builder(MainActivity.this)
                 .setTitle("你的BMI")
- //             .setMessage(bmi_value())
-                .setItems(a,null)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                .setMessage(bmi_value())
+//                .setItems(R.array.color, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        String[] colorArray = getResources().getStringArray(R.array.color);
+//                        showbmi.setText(colorArray[which]);
+//                    }
+//                })
+                  .setMultiChoiceItems(R.array.color, checked, new DialogInterface.OnMultiChoiceClickListener() {
+                      @Override
+                      public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+
+                      }
+                  })
+                  .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Toast.makeText(MainActivity.this, "ABC", Toast.LENGTH_SHORT).show();
