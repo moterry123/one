@@ -99,7 +99,19 @@
         android:layout_marginStart="14dp"
         android:onClick="showToast"
         android:text="Toast"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toEndOf="@+id/btSubmit"
+        app:layout_constraintTop_toTopOf="@+id/btSubmit" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:onClick="show_alterdialog"
+        android:text="AlertDialog"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toStartOf="@+id/btSubmit"
         app:layout_constraintTop_toTopOf="@+id/btSubmit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
