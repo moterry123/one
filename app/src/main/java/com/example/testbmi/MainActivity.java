@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -29,32 +30,32 @@ public class MainActivity extends AppCompatActivity {
         height = findViewById(R.id.edHeight);
         weight = findViewById(R.id.edWeight);
         showbmi = findViewById(R.id.tvShowBMI);
-        ImageView =findViewById(R.id.ivshow);
-        checked = new boolean[]{false,false,false,false};
+        ImageView = findViewById(R.id.ivshow);
+        checked = new boolean[]{false, false, false, false};
     }
 
     public void calBMI(View view) {
         double bmi = Double.parseDouble(bmi_value());
         String txt = "";
-            if(bmi<18.5) {
-                txt = "體重過輕";
-                ImageView.setImageResource(R.drawable.a1);
-            } else if (bmi>25) {
-                txt = "體重過重";
-                ImageView.setImageResource(R.drawable.a3);
-            } else {
-                txt = "體重正常";
-                ImageView.setImageResource(R.drawable.a2);
-            }
-
-
- //           showbmi.setText(String.valueOf(bmi)+txt);
-              showbmi.setText(String.valueOf(bmi)+txt);
-
+        if (bmi < 18.5) {
+            txt = "體重過輕";
+            ImageView.setImageResource(R.drawable.a1);
+        } else if (bmi > 25) {
+            txt = "體重過重";
+            ImageView.setImageResource(R.drawable.a3);
+        } else {
+            txt = "體重正常";
+            ImageView.setImageResource(R.drawable.a2);
         }
 
+
+        //           showbmi.setText(String.valueOf(bmi)+txt);
+        showbmi.setText(String.valueOf(bmi) + txt);
+
+    }
+
     private String bmi_value() {
-        if(height.getText().toString().isEmpty() || weight.getText().toString().isEmpty()) {
+        if (height.getText().toString().isEmpty() || weight.getText().toString().isEmpty()) {
             showbmi.setText("請輸入身高或體重的數值");
             return "0.0";
         } else {
@@ -68,14 +69,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void showToast(View view) {
         String bmi = bmi_value();
-        Toast toast = Toast.makeText(this, bmi,Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.TOP|Gravity.LEFT,0,0);
+        Toast toast = Toast.makeText(this, bmi, Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.TOP | Gravity.LEFT, 0, 0);
 //      Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
         toast.show();
     }
 
     public void show_alterdialog(View view) {
- //       String[] a={"Red","Green","Blue"};
+        //       String[] a={"Red","Green","Blue"};
 
         new AlertDialog.Builder(MainActivity.this)
                 .setTitle("你的BMI")
@@ -87,13 +88,13 @@ public class MainActivity extends AppCompatActivity {
 //                        showbmi.setText(colorArray[which]);
 //                    }
 //                })
-                  .setMultiChoiceItems(R.array.color, checked, new DialogInterface.OnMultiChoiceClickListener() {
-                      @Override
-                      public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+                .setMultiChoiceItems(R.array.color, checked, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
 
-                      }
-                  })
-                  .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    }
+                })
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Toast.makeText(MainActivity.this, "ABC", Toast.LENGTH_SHORT).show();
@@ -105,8 +106,13 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 })
-                .setNeutralButton("ABC",null)
+                .setNeutralButton("ABC", null)
                 .setIcon(R.drawable.ic_launcher_foreground)
                 .show();
+    }
+
+    public void twopage(View view) {
+        Intent intent = new Intent(this,ResultActivity.class);
+        startActivity(intent);
     }
 }
