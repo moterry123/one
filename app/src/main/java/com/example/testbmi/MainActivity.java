@@ -114,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
     public void twopage(View view) {
         Intent intent = new Intent(this,ResultActivity.class);
         intent.putExtra("BMI",bmi_value());
+        intent.putExtra("height",180);
         startActivity(intent);
     }
 }
