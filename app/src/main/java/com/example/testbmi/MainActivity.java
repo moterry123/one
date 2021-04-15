@@ -113,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void twopage(View view) {
         Intent intent = new Intent(this,ResultActivity.class);
+        intent.putExtra("BMI",bmi_value());
         startActivity(intent);
     }
 }

@@ -115,7 +115,7 @@
         app:layout_constraintTop_toTopOf="@+id/btSubmit" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/seconpage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
