@@ -3,6 +3,7 @@ package com.example.testbmi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Notification;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -113,8 +114,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void twopage(View view) {
         Intent intent = new Intent(this,ResultActivity.class);
-        intent.putExtra("BMI",bmi_value());
-        intent.putExtra("height",180);
-        startActivity(intent);
+//        intent.putExtra("BMI",bmi_value());
+//        intent.putExtra("height",180);
+         Bundle bundle = new Bundle();
+         bundle.putString("BMI",bmi_value());
+         bundle.putInt("height",180);
+         intent.putExtras(bundle);
+         startActivity(intent);
     }
 }

@@ -12,8 +12,12 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        String bmi = getIntent().getStringExtra("BMI");
-        int height = getIntent().getIntExtra("height",0);
+//        String bmi = getIntent().getStringExtra("BMI");
+//        int height = getIntent().getIntExtra("height",0);
+        Bundle bundle = getIntent().getExtras();
+        String bmi = bundle.getString("BMI");
+        int height = bundle.getInt("height");
+
         TextView showbmi = findViewById(R.id.secondpage);
         showbmi.setText(String.valueOf(height));
 
