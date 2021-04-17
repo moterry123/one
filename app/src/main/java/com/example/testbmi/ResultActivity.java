@@ -3,6 +3,7 @@ package com.example.testbmi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class ResultActivity extends AppCompatActivity {
@@ -21,5 +22,9 @@ public class ResultActivity extends AppCompatActivity {
         TextView showbmi = findViewById(R.id.secondpage);
         showbmi.setText(String.valueOf(height));
 
+    }
+
+    public void abc(View view) {
+        finish();
     }
 }
